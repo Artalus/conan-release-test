@@ -8,8 +8,7 @@ class ReleasetestConan(ConanFile):
     url = "<Package recipe repository url here, for issues about the package>"
     description = "<Description of Releasetest here>"
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False]}
-    default_options = "shared=False"
+    options = {}
     generators = "cmake"
     exports_sources = "src/*"
     requires = ('boost_date_time/1.65.1@bincrafters/stable')
