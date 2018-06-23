@@ -12,6 +12,7 @@ class ReleasetestConan(ConanFile):
     default_options = "shared=False"
     generators = "cmake"
     exports_sources = "src/*"
+    requires = ('boost_date_time/1.65.1@bincrafters/stable')
 
     def build(self):
         cmake = CMake(self)
