@@ -5,4 +5,4 @@ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(TARGETS)
 
 add_library(hello hello.cpp)
-target_link_libraries(CONAN_PKG::boost_date_time)
+target_link_libraries(hello CONAN_PKG::boost_date_time)
