@@ -1,8 +1,8 @@
 #include <iostream>
 #include <boost/date_time/gregorian/gregorian.hpp>
-#include "hello.h"
+#include "sometimes.h"
 
-void hello(){
+void sometimes(){
     using namespace std;
 
     cout << "Hello World! I am compiled in "

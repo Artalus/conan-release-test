@@ -3,7 +3,7 @@ import os
 from conans import ConanFile, CMake, tools
 
 
-class ReleasetestTestConan(ConanFile):
+class SometimesTestConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
 
@@ -22,4 +22,4 @@ class ReleasetestTestConan(ConanFile):
     def test(self):
         if not tools.cross_building(self.settings):
             os.chdir("bin")
-            self.run(".%sexample" % os.sep)
+            self.run(".%ssometimesTest" % os.sep)

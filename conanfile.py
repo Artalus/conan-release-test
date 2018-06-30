@@ -1,12 +1,12 @@
 from conans import ConanFile, CMake
 
 
-class ReleasetestConan(ConanFile):
-    name = "release_test"
+class SometimesConan(ConanFile):
+    name = "sometimes"
     version = "0.1"
     license = "<Put the package license here>"
     url = "<Package recipe repository url here, for issues about the package>"
-    description = "<Description of Releasetest here>"
+    description = "<Description of sometimes here>"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
     default_options = "shared=False"
@@ -20,11 +20,6 @@ class ReleasetestConan(ConanFile):
         cmake.configure(source_folder="src")
         cmake.build()
 
-        # Explicit way:
-        # self.run('cmake %s/hello %s'
-        #          % (self.source_folder, cmake.command_line))
-        # self.run("cmake --build . %s" % cmake.build_config)
-
     def package(self):
         self.copy("*.h", dst="include", src="src")
         self.copy("*.lib", dst="lib", keep_path=False)
@@ -34,4 +29,4 @@ class ReleasetestConan(ConanFile):
         self.copy("*.a", dst="lib", keep_path=False)
 
     def package_info(self):
-        self.cpp_info.libs = ["hello"]
+        self.cpp_info.libs = ["sometimes"]
