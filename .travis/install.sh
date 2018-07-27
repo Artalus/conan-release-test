@@ -20,6 +20,6 @@ if [[ "$(uname -s)" == 'Darwin' ]]; then
 fi
 
 pip install conan --upgrade
-pip install --index-url https://test.pypi.org/simple/ artalus-copato
+pip install artalus-copato
 
 conan user
