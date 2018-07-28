@@ -8,8 +8,6 @@ class SometimesConan(ConanFile):
     url = "<Package recipe repository url here, for issues about the package>"
     description = "<Description of sometimes here>"
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False]}
-    default_options = "shared=False"
 
     generators = "cmake"
     exports_sources = "src/*"
