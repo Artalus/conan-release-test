@@ -13,13 +13,15 @@ if [[ "$(uname -s)" == 'Darwin' ]]; then
         eval "$(pyenv init -)"
     fi
 
-    pyenv install 2.7.10
-    pyenv virtualenv 2.7.10 conan
+    pyenv install 2.7.10 --skip-existing
+    pyenv virtualenv 2.7.10 conan --force
     pyenv rehash
     pyenv activate conan
 fi
 
 pip install conan --upgrade
-pip install artalus-copato
+pip install conan-package-tools
+pip uninstall conan-package-tools -y
+pip install --index-url https://test.pypi.org/simple/ artalus-copato
 
 conan user
