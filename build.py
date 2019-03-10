@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
+import os
 from conan.packager import ConanMultiPackager
 
 if __name__ == "__main__":
-    builder = ConanMultiPackager(\
+    os.environ['CONAN_CMAKE_GENERATOR']='Ninja'
+    builder = ConanMultiPackager(
+        docker_build_options='--mount type=bind,source=$HOME/.conan/data,destination=/home/conan/.conan/data',
+        pip_install=['ninja'],
+
         username="Artalus",
         channel='copato-dock',
         remotes="https://api.bintray.com/conan/bincrafters/public-conan",

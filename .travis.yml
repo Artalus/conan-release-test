@@ -1,29 +1,37 @@
 linux: &linux
-   os: linux
-   sudo: required
-   language: python
-   python: "3.6"
-   services:
-     - docker
+  os: linux
+  sudo: required
+  language: python
+  python: "3.6"
+  services:
+    - docker
+  cache:
+    directories:
+      - $HOME/.conan/data
 osx: &osx
-   os: osx
-   language: generic
+  os: osx
+  language: generic
+  cache:
+    directories:
+      - $HOME/.conan/data
+      - $HOME/.pyenv/versions/2.7.10/
+      - /usr/local/Homebrew
 matrix:
-   include:
-      - <<: *osx
-        osx_image: xcode9.3
-        env: CONAN_APPLE_CLANG_VERSIONS=9.1
-      - <<: *osx
-        osx_image: xcode10
-        env: CONAN_APPLE_CLANG_VERSIONS=10.0
-      - <<: *linux
-        env: CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=conanio/gcc7
-      - <<: *linux
-        env: CONAN_GCC_VERSIONS=8 CONAN_DOCKER_IMAGE=conanio/gcc8
-      - <<: *linux
-        env: CONAN_CLANG_VERSIONS=6.0 CONAN_DOCKER_IMAGE=conanio/clang60
-      - <<: *linux
-        env: CONAN_CLANG_VERSIONS=7.0 CONAN_DOCKER_IMAGE=conanio/clang7
+  include:
+    - <<: *osx
+      osx_image: xcode9.3
+      env: CONAN_APPLE_CLANG_VERSIONS=9.1
+    - <<: *osx
+      osx_image: xcode10
+      env: CONAN_APPLE_CLANG_VERSIONS=10.0
+    - <<: *linux
+      env: CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=conanio/gcc7
+    - <<: *linux
+      env: CONAN_GCC_VERSIONS=8 CONAN_DOCKER_IMAGE=conanio/gcc8
+    - <<: *linux
+      env: CONAN_CLANG_VERSIONS=6.0 CONAN_DOCKER_IMAGE=conanio/clang60
+    - <<: *linux
+      env: CONAN_CLANG_VERSIONS=7.0 CONAN_DOCKER_IMAGE=conanio/clang7
 
 install:
   - chmod +x .travis/install.sh
@@ -32,3 +40,7 @@ install:
 script:
   - chmod +x .travis/run.sh
   - ./.travis/run.sh
+
+before_cache:
+  - chmod +x .travis/before_cache.sh
+  - ./.travis/before_cache.sh

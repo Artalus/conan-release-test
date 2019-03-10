@@ -1,24 +1,30 @@
 build: false
 
+cache:
+  - '%USERPROFILE%\.conan\data -> appveyor.yml'
+  - C:\.conan -> appveyor.yml
+
 environment:
     PYTHON: "C:\\Python27"
     PYTHON_VERSION: "2.7.8"
     PYTHON_ARCH: "32"
-    
-    matrix:
 
-        - MINGW_CONFIGURATIONS: "6@x86_64@seh@posix"
-          CONAN_BASH_PATH: "c:\\msys64\\usr\\bin\\bash"
-          
+    matrix:
         - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
           CONAN_VISUAL_VERSIONS: 14
+        - MINGW_CONFIGURATIONS: "8@x86_64@seh@posix"
+          CONAN_BASH_PATH: "c:\\msys64\\usr\\bin\\bash"
 
 
 install:
   - set PATH=%PATH%;%PYTHON%/Scripts/
+  - pip.exe install ninja --upgrade
   - pip.exe install conan --upgrade
-  - pip.exe install artalus-copato
+  - pip.exe install conan-package-tools
+  - pip.exe uninstall conan-package-tools -y
+  - pip.exe install --index-url https://test.pypi.org/simple/ artalus-copato
   - conan user # It creates the conan data directory
 
 test_script:
+  # - dir %USERPROFILE%\.conan\data\boost_algorithm\
   - python build.py
