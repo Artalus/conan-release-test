@@ -18,7 +18,6 @@ environment:
 
 install:
   - set PATH=%PATH%;%PYTHON%/Scripts/
-  - pip.exe install ninja --upgrade
   - pip.exe install conan --upgrade
   - pip.exe install conan-package-tools
   - conan user # It creates the conan data directory
