@@ -21,10 +21,7 @@ install:
   - pip.exe install ninja --upgrade
   - pip.exe install conan --upgrade
   - pip.exe install conan-package-tools
-  - pip.exe uninstall conan-package-tools -y
-  - pip.exe install --index-url https://test.pypi.org/simple/ artalus-copato
   - conan user # It creates the conan data directory
 
 test_script:
-  # - dir %USERPROFILE%\.conan\data\boost_algorithm\
   - python build.py

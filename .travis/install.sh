@@ -22,7 +22,5 @@ fi
 pip install ninja --upgrade
 pip install conan --upgrade
 pip install conan-package-tools
-pip uninstall conan-package-tools -y
-pip install --index-url https://test.pypi.org/simple/ artalus-copato
 
 conan user

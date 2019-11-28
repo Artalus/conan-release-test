@@ -5,11 +5,11 @@ from conan.packager import ConanMultiPackager
 if __name__ == "__main__":
     os.environ['CONAN_CMAKE_GENERATOR']='Ninja'
     builder = ConanMultiPackager(
-        docker_build_options='--mount type=bind,source=$HOME/.conan/data,destination=/home/conan/.conan/data',
+        docker_run_options='--mount type=bind,source=$HOME/.conan/data,destination=/home/conan/.conan/data',
         pip_install=['ninja'],
 
         username="Artalus",
-        channel='copato-dock',
+        channel='ci',
         remotes="https://api.bintray.com/conan/bincrafters/public-conan",
         build_policy='missing',
 
