@@ -5,8 +5,8 @@ cache:
   - C:\.conan -> appveyor.yml
 
 environment:
-    PYTHON: "C:\\Python27"
-    PYTHON_VERSION: "2.7.8"
+    PYTHON: "C:\\Python35"
+    PYTHON_VERSION: "3.5.9"
     PYTHON_ARCH: "32"
 
     matrix:
